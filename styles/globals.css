@@ -1,3 +1,49 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+.ReactTags__tags {
+    position: relative;
+}
+
+/* Styles for the input */
+.ReactTags__tagInput input.ReactTags__tagInputField,
+.ReactTags__tagInput input.ReactTags__tagInputField:focus {
+    height: 31px;
+    margin: 5px 0 0 3px;
+    font-size: 12px;
+    border-bottom: 2px solid #63bcfd;
+    min-width: 150px;
+    outline: none;
+}
+
+.ReactTags__editInput {
+    border-radius: 1px;
+}
+
+.ReactTags__editTagInput {
+    display: inline-flex;
+}
+
+/* Styles for selected tags */
+.ReactTags__selected span.ReactTags__tag {
+    border: 1px solid #ddd;
+    background: #63bcfd;
+    color: white;
+    font-size: 14px;
+    display: inline-block;
+    padding: 5px;
+    margin: 2px 5px;
+    border-radius: 3px;
+}
+
+.ReactTags__remove {
+    margin-left: 2px;
+}
+
+/* Styles for the input */
+.ReactTags__tagInput {
+    border-radius: 2px;
+    display: inline-block;
+}
