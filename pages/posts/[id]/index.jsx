@@ -1,8 +1,8 @@
 import Head from "next/head";
 import { useRouter } from "next/router";
 import React from "react";
-import Date from "../../../components/date";
 import { useStore } from "../../../context";
+import Date from "../../../lib/date";
 
 const Post = () => {
   const [posts] = useStore();
