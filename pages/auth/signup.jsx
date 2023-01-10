@@ -1,4 +1,7 @@
 import axios from "axios";
+import { signIn } from "next-auth/react";
+import Link from "next/link";
+import Router from "next/router";
 // import Link from "next/link";
 import React, { useState } from "react";
 
@@ -15,20 +18,25 @@ const SignUpForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    axios.post('http://localhost:3000/api/users', {
-      firstName: credentials.firstName,
-      lastName: credentials.lastName,
-      password: credentials.password,
-      email: credentials.email
-    }).then(res=>console.log(res))
-    .catch((error)=>{
-      if(error?.response?.status === 400) {
-        setErrors(error?.response?.data?.error?.errors?? error?.response?.data?.error)
-      }
-      else if(error?.response?.status === 500) {
-        setErrors({message: "Connection error"})
-      }
-    })
+    axios
+      .post("http://localhost:3000/api/users", {
+        firstName: credentials.firstName,
+        lastName: credentials.lastName,
+        password: credentials.password,
+        email: credentials.email,
+      })
+      .then((res) => {
+        Router.replace("/auth/login");
+      })
+      .catch((error) => {
+        if (error?.response?.status === 400) {
+          setErrors(
+            error?.response?.data?.error?.errors ?? error?.response?.data?.error
+          );
+        } else if (error?.response?.status === 500) {
+          setErrors({ message: "Connection error" });
+        }
+      });
   };
 
   return (
@@ -122,12 +130,12 @@ const SignUpForm = () => {
             </div>
             <div className="mt-6 text-grey-dark">
               Already have an account?{" "}
-              {/* <Link
-                href="account/login"
+              <Link
+                href="login"
                 className="text-blue-600 hover:underline underline-offset-2 font-medium"
               >
                 Log in
-              </Link> */}
+              </Link>
             </div>
           </div>
         </form>
